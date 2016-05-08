@@ -1,0 +1,21 @@
+{
+  "name": "angular-vdom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify ./example/angular-app.js > ./example/built.js"
+  },
+  "author": "Jack Hanford <jackhanford@gmail.com> (http://jackhanford.com)",
+  "license": "MIT",
+  "dependencies": {
+    "defaults": "~1.0.3",
+    "main-loop": "~3.2.0",
+    "virtual-dom": "~2.1.1"
+  },
+  "devDependencies": {
+    "angular": "~1.5.5",
+    "browserify": "~13.0.1",
+    "watchify": "~3.7.0"
+  }
+}

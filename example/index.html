@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>angular-vdom</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body ng-app="example1">
+    <div ng-controller="example1Ctrl" ng-init="count = 0" class="container">
+      <div>angular: {{count}}</div>
+      <br />
+      <div><counter count="count"></counter></div>
+      <br />
+      <button ng-click="count = count + 1">Increment</button>
+    </div>
+
+    <script src="./built.js"></script>
+  </body>
+</html>
