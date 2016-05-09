@@ -10,15 +10,21 @@ function virtualComponent (selector, render, state, componentConfig) {
     controller: function () {
       var loop = Loop(state, render, vdom)
 
-      this.$onInit = function () {
+      return {
+        $onInit: $onInit,
+        $onDestroy: $onDestroy,
+        $onChanges: $onChanges
+      }
+
+      function $onInit () {
         document.querySelector(selector).appendChild(loop.target)
       }
 
-      this.$onDestroy = function () {
+      function $onDestroy () {
         loop.target = null
       }
 
-      this.$onChanges = function (change) {
+      function $onChanges (change) {
         Object.keys(componentConfig.bindings)
           .forEach(function (binding) {
             if (change[binding].currentValue) {
