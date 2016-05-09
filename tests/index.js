@@ -19,8 +19,7 @@ describe('angular-vdom', function () {
   it('Replaces the element with the appropriate content', function () {
     var element = $compile("<counter count='count'></counter>")($rootScope)
     $rootScope.$digest()
-    debugger
     console.log(element.html())
-    // expect(element.html()).toContain("virtual-dom: 0")
+    expect(element.html()).to.equal("<div>virtual-dom: 0</div>")
   })
 })

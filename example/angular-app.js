@@ -1,6 +1,6 @@
 var virtualComponent = require('../index.js')
 var Counter = require('./virtual-component')
-var countComponent = virtualComponent('counter', Counter.render, 0, {bindings: {count: '<'}})
+var countComponent = virtualComponent(Counter.render, 0, {bindings: {count: '<'}})
 
 module.exports = require('angular')
   .module('example1', [])
