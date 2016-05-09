@@ -30,12 +30,8 @@ function render (message) {
 
 #### API 
 angular-vdom exports a function that takes in few params:  
-`ngVirtualComponent(element, render, state, {bindings: {}})`  
+`ngVirtualComponent(render, state, {bindings: {}})`  
 
-<b>Elemen Name</b>  
-required: `true`  
-type: `String`  
-dash-case string of element/component name, the virtual dom elements will be direct child of this element  
   
 <b>Render function</b>  
 required: `true`  

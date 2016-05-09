@@ -4,9 +4,17 @@ var vdom = require('virtual-dom')
 
 module.exports = virtualComponent
 
-function virtualComponent (selector, render, state, componentConfig) {
+function virtualComponent (render, state, componentConfig) {
+  // when template or templateUrl is a function, $element and $attrs are
+  // always injected, giving us access to the element immdiately
+  // https://docs.angularjs.org/api/ng/provider/$compileProvider#component
+  var element
+
   return defaults(componentConfig, {
     bindings: {},
+    template: function ($element) {
+      element = $element[0]
+    },
     controller: function () {
       var loop = Loop(state, render, vdom)
 
@@ -17,7 +25,7 @@ function virtualComponent (selector, render, state, componentConfig) {
       }
 
       function $onInit () {
-        document.querySelector(selector).appendChild(loop.target)
+        element.appendChild(loop.target)
       }
 
       function $onDestroy () {
