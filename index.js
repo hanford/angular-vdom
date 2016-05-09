@@ -21,7 +21,9 @@ function virtualComponent (selector, render, state, componentConfig) {
       this.$onChanges = function (change) {
         Object.keys(componentConfig.bindings)
           .forEach(function (binding) {
-            loop.update(change[binding].currentValue)
+            if (change[binding].currentValue) {
+              loop.update(change[binding].currentValue)
+            }
           })
       }
     }
