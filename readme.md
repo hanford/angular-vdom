@@ -7,7 +7,7 @@ Use virtual-dom components in an angular application by taking advantage of angu
 // app.js
 var h = require('virtual-dom/h')
 var ngVirtualComponent = require('angular-vdom')
-var virtualComponent = ngVirtualComponent('virtual-component', render, state, {bindings: {message: '<'}})
+var virtualComponent = ngVirtualComponent(render, state, {bindings: {message: '<'}})
 
 module.exports = require('angular')
   .module('app', [])
@@ -44,7 +44,7 @@ Default values for bindings
 
 <b>Options</b>  
 required: `true`  
-type: `object`
+type: `object`  
 Default values for configuring the angular component. Binded value changes will trigger an .$onChange(), which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
 
 
