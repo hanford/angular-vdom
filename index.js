@@ -4,13 +4,13 @@ var vdom = require('virtual-dom')
 
 module.exports = virtualComponent
 
-function virtualComponent (render, state, componentConfig) {
+function virtualComponent (render, state, options) {
   // when template or templateUrl is a function, $element and $attrs are
   // always injected, giving us access to the element immdiately
   // https://docs.angularjs.org/api/ng/provider/$compileProvider#component
   var element
 
-  return defaults(componentConfig, {
+  return defaults(options, {
     bindings: {},
     template: function ($element) {
       element = $element[0]
@@ -33,7 +33,8 @@ function virtualComponent (render, state, componentConfig) {
       }
 
       function $onChanges (change) {
-        Object.keys(componentConfig.bindings)
+        if (!change) return
+        Object.keys(options.bindings)
           .forEach(function (binding) {
             if (change[binding].currentValue) {
               loop.update(change[binding].currentValue)

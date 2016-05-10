@@ -30,7 +30,7 @@ function render (message) {
 
 #### API 
 angular-vdom exports a function that takes in few params:  
-`ngVirtualComponent(render, state, {bindings: {}})`  
+`ngVirtualComponent(render, state, options)`  
 
   
 <b>Render function</b>  
@@ -42,7 +42,7 @@ required: `true`
 type: `object`, `array`, `string` or `value`
 Default values for bindings 
 
-<b>Component Definition</b>  
+<b>Options</b>  
 required: `true`  
 type: `object`
 Default values for configuring the angular component. Binded value changes will trigger an .$onChange(), which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
