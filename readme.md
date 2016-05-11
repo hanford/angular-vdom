@@ -7,7 +7,7 @@ Use virtual-dom components in an angular application by taking advantage of angu
 // app.js
 var h = require('virtual-dom/h')
 var ngVirtualComponent = require('angular-vdom')
-var virtualComponent = ngVirtualComponent(render, state, {bindings: {message: '<'}})
+var virtualComponent = ngVirtualComponent(render, {bindings: {message: '<'}})
 
 module.exports = require('angular')
   .module('app', [])
@@ -30,17 +30,12 @@ function render (message) {
 
 #### API 
 angular-vdom exports a function that takes in few params:  
-`ngVirtualComponent(render, state, options)`  
+`ngVirtualComponent(render, options)`  
 
   
 <b>Render function</b>  
 required: `true`  
 function that returns virtual nodes
-  
-<b>State</b>  
-required: `true`  
-type: `object`, `array`, `string` or `value`
-Default values for bindings 
 
 <b>Options</b>  
 required: `true`  

@@ -4,6 +4,6 @@ module.exports = Counter
 
 function Counter () {}
 
-Counter.render = function render (count) {
-  return h('div', {}, 'virtual-dom: ' + count)
+Counter.render = function render (state) {
+  return h('div', {}, 'virtual-dom: ' + state.count)
 }

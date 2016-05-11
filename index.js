@@ -1,13 +1,20 @@
 var defaults = require('defaults')
 var Loop = require('main-loop')
 var vdom = require('virtual-dom')
+var each = require('foreach')
 
 module.exports = virtualComponent
 
-function virtualComponent (render, state, options) {
+function virtualComponent (render, options) {
   return defaults(options, {
     bindings: {},
-    controller: function ($element) {
+    controller: function ($element, $scope) {
+      var state = {}
+
+      each(options.bindings, function (value, key, object) {
+        state[key] = $scope.$parent[key]
+      })
+
       var loop = Loop(state, render, vdom)
 
       return {
@@ -26,12 +33,13 @@ function virtualComponent (render, state, options) {
 
       function $onChanges (change) {
         if (!change) return
-        Object.keys(options.bindings)
-          .forEach(function (binding) {
-            if (change[binding].currentValue) {
-              loop.update(change[binding].currentValue)
-            }
-          })
+        var updates = Object.keys(change)
+
+        updates.forEach(function (key) {
+          state[key] = change[key].currentValue
+        })
+
+        loop.update(state)
       }
     }
   })

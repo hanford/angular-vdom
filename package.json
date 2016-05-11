@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "defaults": "~1.0.3",
+    "foreach": "~2.0.5",
     "main-loop": "~3.2.0",
     "virtual-dom": "~2.1.1"
   },
