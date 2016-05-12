@@ -8,11 +8,15 @@ module.exports = virtualComponent
 function virtualComponent (render, options) {
   return defaults(options, {
     bindings: {},
-    controller: function ($element, $scope) {
+    controller: function ($element, $scope, $attrs) {
       var state = {}
 
       each(options.bindings, function (value, key, object) {
-        state[key] = $scope.$parent[key] !== undefined ? $scope.$parent[key] : findControllerAs($scope.$parent)[key]
+        if ($attrs.controllerAs !== undefined) {
+          state[key] = $scope.$parent[$attrs.controllerAs][key]
+        } else {
+          state[key] = $scope.$parent[key]
+        }
       })
 
       var loop = Loop(state, render, vdom)
@@ -43,16 +47,4 @@ function virtualComponent (render, options) {
       }
     }
   })
-}
-
-function findControllerAs (scope) {
-  // Probably a pretty gross hack. If the user is using controllerAs, then their values binded to the component
-  // are one level deeper then non controllerAs, we simple iterate over the $scope object and find the first
-  // item that isn't prefixed with a '$' as that will be the controllerAs variable.
-  var controllerAs = Object.keys(scope)
-    .filter(function (k) {
-      return k.indexOf('$') === -1
-    })[0]
-
-  return scope[controllerAs]
 }
