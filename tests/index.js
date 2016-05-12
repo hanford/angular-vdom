@@ -17,9 +17,9 @@ describe('angular-vdom', function () {
   }))
 
   it('Replaces the element with the appropriate content', function () {
-    var element = $compile("<counter count='count'></counter>")($rootScope)
+    var element = $compile("<div ng-init='count = 0'><counter count='count'></counter></div>")($rootScope)
     $rootScope.$digest()
     console.log(element.html())
-    expect(element.html()).to.equal("<div>virtual-dom: 0</div>")
+    expect(element.html()).to.equal('<counter count="count" class="ng-isolate-scope"><div>virtual-dom: 0</div></counter>')
   })
 })
