@@ -40,7 +40,9 @@ function virtualComponent (render, options) {
         var updates = Object.keys(change)
 
         updates.forEach(function (key) {
-          state[key] = change[key].currentValue
+          if (change[key].currentValue !== undefined) {
+            state[key] = change[key].currentValue
+          }
         })
 
         loop.update(state)
