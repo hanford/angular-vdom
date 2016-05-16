@@ -8,7 +8,7 @@ module.exports = virtualComponent
 function virtualComponent (render, options) {
   return defaults(options, {
     bindings: {},
-    controller: function ($element, $scope, $attrs) {
+    controller: ['$element', '$scope', '$attrs', function ($element, $scope, $attrs) {
       var state = {}
 
       each(options.bindings, function (value, key, object) {
@@ -47,6 +47,6 @@ function virtualComponent (render, options) {
 
         loop.update(state)
       }
-    }
+    }]
   })
 }
