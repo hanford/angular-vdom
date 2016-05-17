@@ -18,8 +18,8 @@ module.exports = require('angular')
   .name
 
 // Doesn't need to be hyperscript as long as we return a VTree
-function render (message) {
-  return h('div', message)
+function render (state) {
+  return h('div', state.message)
 }
 
 ```  
@@ -45,6 +45,10 @@ function that returns a VTree. I use [hyperscript](https://github.com/dominictar
 required: `true`  
 type: `object`  
 Default values for configuring the angular component. Binded value changes will trigger an .$onChange(), which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
+
+#### TODO
+- Emit events for angular controller consumption
+- Integrate into ui-router and angulars router for full page virtual-dom pages
 
 
 #### Building
