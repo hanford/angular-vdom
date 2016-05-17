@@ -1,9 +1,9 @@
 ### angular-vdom
 
-angular-vdom allows you to take advantage of ultra high performance rendering virtual-dom components in an angular 1.5 application. Under the hood anguar-vdom takes advantage of angulars new .component() lifecycle hooks
+angular-vdom allows you to take advantage of ultra high performance rendering with virtual-dom components in an angular 1.5 application, under the hood anguar-vdom takes advantage of angulars new .component() lifecycle hooks and is perfect for stateless components
 
 #### How?
-angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop)
+angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop), take a look at the source.. it's super straight forward
 
 #### Usage
 ```js
@@ -26,25 +26,21 @@ function render (state) {
 
 ```html
 // index.html
-
 <div ng-app="app">
   <virtual-component message="Hello World!"></virtual-component>
 </div>
-```
+```  
 
-#### api 
+#### API  
 angular-vdom exports a function that takes two params:  
 `ngVirtualComponent(render, options)`  
 
 
-<b>Render function</b>  
-required: `true`  
+##### Render -> fn  
 function that returns a VTree. I use [hyperscript](https://github.com/dominictarr/hyperscript) but you can use [hyperx](https://github.com/substack/hyperx) and even [jsx](https://github.com/alexmingoia/jsx-transform)
 
-<b>Options</b>  
-required: `true`  
-type: `object`  
-Default values for configuring the angular component. Binded value changes will trigger an .$onChange(), which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
+##### Options -> {object}  
+Default values for configuring the angular component. When a binded value changes it will trigger an $onChange() event, which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
 
 #### TODO
 - Emit events for angular controller consumption
