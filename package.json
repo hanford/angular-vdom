@@ -6,7 +6,8 @@
   "scripts": {
     "build": "browserify ./example/angular-app.js > ./example/built.js",
     "test": "./node_modules/.bin/karma start",
-    "test-watch": "./node_modules/.bin/karma start --single-run=false"
+    "test-watch": "./node_modules/.bin/karma start --single-run=false",
+    "watch": "watchify ./website/app.js -d -o ./website/built.js -v"
   },
   "keywords": [
     "angular",
@@ -15,7 +16,7 @@
     "dom",
     "angular virtualdom",
     "angular vdom",
-    "vdom",
+    "vdom"
   ],
   "author": "Jack Hanford <jackhanford@gmail.com> (http://jackhanford.com)",
   "license": "MIT",

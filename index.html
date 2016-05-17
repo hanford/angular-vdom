@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>angular-vdom</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        max-width: 900px;
+        margin: 0 auto;
+        font-family: 'Open sans', sans-serif;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        flex-direction: column;
+      }
+
+      .example {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      [center] {
+        text-align: center;
+      }
+
+      a {
+        color: #587ee6;
+        text-decoration: none;
+      }
+
+    </style>
+  </head>
+  <body ng-app="app" ng-controller="ctrl">
+    <a href="https://github.com/hanford/angular-vdom"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <div class="container">
+      <h2>angular-vdom</h2>
+      <p>Efficiently render virtual-dom components inside an exsisting angular application, the angular way.</p>
+      <p center>When your angular model changes, your virtual-dom component will re-render next <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/">rAF</a></p>
+      <div class="example">
+        <div>Angular: {{total}}</div>
+        <counter total="total"></counter>
+        <br />
+        <button ng-click="add()">Incremement</button>
+      </div>
+      <div style="margin-top:40px">
+        <iframe src="https://ghbtns.com/github-btn.html?user=hanford&repo=angular-vdom&type=star&count=true&size=large" frameborder="0" scrolling="0" height="30px" style="display:inline-block;margin:0 auto;width:111px"></iframe>
+      </div>
+    </div>
+    <script src="./website/built.js"></script>
+  </body>
+</html>
