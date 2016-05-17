@@ -2,7 +2,7 @@
 
 [![NPM][angular-vdom-icon]][angular-vdom-url]
 
-angular-vdom allows you to take advantage of ultra high performance rendering with virtual-dom components in an angular 1.5 application, under the hood anguar-vdom takes advantage of angulars new .component() lifecycle hooks and is perfect for stateless components
+angular-vdom allows you to have ultra high performance rendering with virtual-dom components angular 1.5. Under the hood, anguar-vdom takes uses the new .component() lifecycle hooks and works perfectly with stateless components
 
 #### How?
 angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop), take a look at the source.. it's super straight forward
@@ -33,6 +33,25 @@ function render (state) {
 </div>
 ```  
 
+Usage with [ui-router](https://github.com/angular-ui/ui-router) too!
+```js
+var virtualComponent = ngVirtualComponent(render, {bindings: {message: '<'}})
+
+angular
+  .module('app', [])
+  .component('virtualComponent', virtualComponent)
+  .config(['$stateProvider', function ($stateProvider) {
+    $stateProvider.state('virtual', {
+      url: '/virtual',
+      template: '<virtual-component message="vd.message"></virtual-component>',
+      controllerAs: 'vd',
+      controller: function () {
+        this.message = 'Hello World'
+      }
+    })
+  }])
+```  
+
 #### API  
 angular-vdom exports a function that takes two params:  
 `ngVirtualComponent(render, options)`  
@@ -44,9 +63,12 @@ function that returns a VTree. I use [hyperscript](https://github.com/dominictar
 ##### Options -> {object}  
 Default values for configuring the angular component. When a binded value changes it will trigger an $onChange() event, which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
 
+##### Using controllerAs?  
+Just use the attribute  
+`<virtual-component controller-as="vd" message="vd.message"></virtual-component>`
+
 #### TODO
 - Emit events for angular controller consumption
-- Integrate into ui-router and angulars router for full page virtual-dom pages
 
 
 #### Building
