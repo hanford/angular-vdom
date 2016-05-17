@@ -5,7 +5,7 @@
 angular-vdom allows you to have ultra high performance rendering with virtual-dom components angular 1.5. Under the hood, anguar-vdom takes uses the new .component() lifecycle hooks and works perfectly with stateless components
 
 #### huh?
-angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop), take a look at the [source](https://github.com/hanford/angular-vdom/blob/master/index.js), it's super straight forward. Why does angular need an virtual-dom implementation? Read about the [performance gains](https://auth0.com/blog/2016/01/07/more-benchmarks-virtual-dom-vs-angular-12-vs-mithril-js-vs-the-rest/)
+angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop), take a look at the [source](https://github.com/hanford/angular-vdom/blob/master/index.js), it's super straight forward. Why does angular need a virtual-dom implementation? Read about the [performance gains](https://auth0.com/blog/2016/01/07/more-benchmarks-virtual-dom-vs-angular-12-vs-mithril-js-vs-the-rest/)
 
 #### Usage
 ```js
@@ -76,6 +76,8 @@ Just use the attribute
 ``cd example/``  
 ``open index.html``
 
+
+##### More
 [angular component lifecycle hooks](https://docs.angularjs.org/guide/component)
 
 
