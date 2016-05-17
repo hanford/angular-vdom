@@ -1,5 +1,7 @@
 ### angular-vdom
 
+[![NPM][angular-vdom-icon]][angular-vdom-url]
+
 angular-vdom allows you to take advantage of ultra high performance rendering with virtual-dom components in an angular 1.5 application, under the hood anguar-vdom takes advantage of angulars new .component() lifecycle hooks and is perfect for stateless components
 
 #### How?
@@ -53,3 +55,7 @@ Default values for configuring the angular component. When a binded value change
 ``open index.html``
 
 [angular component lifecycle hooks](https://docs.angularjs.org/guide/component)
+
+
+[angular-vdom-icon]: https://nodei.co/npm/angular-vdom.png?downloads=true
+[angular-vdom-url]: https://npmjs.org/package/angular-vdom
