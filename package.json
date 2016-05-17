@@ -1,13 +1,22 @@
 {
   "name": "angular-vdom",
   "version": "0.4.1",
-  "description": "",
+  "description": "angular wrapper for high performance rendering virtual-dom with the .component() method",
   "main": "index.js",
   "scripts": {
     "build": "browserify ./example/angular-app.js > ./example/built.js",
     "test": "./node_modules/.bin/karma start",
     "test-watch": "./node_modules/.bin/karma start --single-run=false"
   },
+  "keywords": [
+    "angular",
+    "virtual-dom",
+    "virtual",
+    "dom",
+    "angular virtualdom",
+    "angular vdom",
+    "vdom",
+  ],
   "author": "Jack Hanford <jackhanford@gmail.com> (http://jackhanford.com)",
   "license": "MIT",
   "dependencies": {
