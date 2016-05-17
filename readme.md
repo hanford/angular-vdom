@@ -43,7 +43,7 @@ angular
   .config(['$stateProvider', function ($stateProvider) {
     $stateProvider.state('virtual', {
       url: '/virtual',
-      template: '<virtual-component message="vd.message"></virtual-component>',
+      template: '<virtual-component controller-as="vd" message="vd.message"></virtual-component>',
       controllerAs: 'vd',
       controller: function () {
         this.message = 'Hello World'
