@@ -2,10 +2,10 @@
 
 [![NPM][angular-vdom-icon]][angular-vdom-url]
 
-angular-vdom allows you to have ultra high performance rendering with virtual-dom components angular 1.5. Under the hood, anguar-vdom takes uses the new .component() lifecycle hooks and works perfectly with stateless components
+angular-vdom allows you to have ultra high performance rendering with virtual-dom components angular 1.5. Under the hood, anguar-vdom takes uses the new .component() lifecycle hooks and works perfectly with stateless components. [Live Demo!](http://jackhanford.com/angular-vdom)
 
 #### huh?
-angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop), take a look at the [source](https://github.com/hanford/angular-vdom/blob/master/index.js), it's super straight forward. Why does angular need a virtual-dom implementation? Read about the [performance gains](https://auth0.com/blog/2016/01/07/more-benchmarks-virtual-dom-vs-angular-12-vs-mithril-js-vs-the-rest/)
+angular-vdom uses [virtual-dom](https://github.com/Matt-Esch/virtual-dom) and [main-loop](https://github.com/raynos/main-loop), take a look at the [source](https://github.com/hanford/angular-vdom/blob/master/index.js), it's super straight forward. Why does angular need a virtual-dom implementation? You can check out the performance gains over [here](https://auth0.com/blog/2016/01/07/more-benchmarks-virtual-dom-vs-angular-12-vs-mithril-js-vs-the-rest/). This works great on pages that require **huge** lists or tables, with 60 FPS scrolling and instant patching
 
 #### Usage
 ```js
@@ -58,7 +58,7 @@ angular-vdom exports a function that takes two params:
 
 
 ##### Render -> fn  
-function that returns a VTree. I use [hyperscript](https://github.com/dominictarr/hyperscript) but you can use [hyperx](https://github.com/substack/hyperx) and even [jsx](https://github.com/alexmingoia/jsx-transform)
+function that returns a VTree. I use [hyperscript](https://github.com/dominictarr/hyperscript) but you can use [hyperx](https://github.com/substack/hyperx) and even [jsx](https://github.com/alexmingoia/jsx-transform). The render function is called with a `state` object, that contains your bindings data
 
 ##### Options -> {object}  
 Default values for configuring the angular component. When a binded value changes it will trigger an $onChange() event, which will then [rAF](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) and render
