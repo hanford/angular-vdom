@@ -1,6 +1,6 @@
 {
   "name": "angular-vdom",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "angular wrapper for high performance rendering virtual-dom with the .component() method",
   "main": "index.js",
   "scripts": {
