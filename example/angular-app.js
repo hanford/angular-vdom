@@ -1,9 +1,9 @@
 var virtualComponent = require('../index.js')
 var Counter = require('./virtual-component')
-var countComponent = virtualComponent(Counter.render, {bindings: {count: '<'}})
+var countComponent = virtualComponent(Counter, {scope: {count: '<'}})
 
 module.exports = require('angular')
   .module('example1', [])
-  .component('counter', countComponent)
+  .directive('counter', countComponent)
   .controller('example1Ctrl', function () {})
   .name
