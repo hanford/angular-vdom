@@ -24,7 +24,9 @@ function virtualDirective (component, options) {
       },
       controller: ['$scope', '$attrs', function ($scope, $attrs) {
         each($attrs.$attr, function (value, key) {
+          if (!value) return
           $scope.$watch(value, function (nv) {
+            if (!nv) return
             state[value].set(nv)
           })
         })
