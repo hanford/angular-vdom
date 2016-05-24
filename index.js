@@ -12,11 +12,7 @@ function virtualDirective (component, options) {
     return defaults(options, {
       restrict: 'E',
       link: function (scope, element, attrs) {
-        var loop = Loop(state(), render, vdom)
-
-        function render (state) {
-          return component.render(state)
-        }
+        var loop = Loop(state(), component.render, vdom)
 
         element.append(loop.target)
 
