@@ -6,7 +6,7 @@ var each = require('foreach')
 module.exports = virtualDirective
 
 function virtualDirective (component, options) {
-  var state = component()
+  var state
   var loop
 
   return function () {
@@ -14,6 +14,7 @@ function virtualDirective (component, options) {
       restrict: 'E',
       scope: false,
       link: function (scope, element, attrs) {
+        state = component()
         loop = Loop(state(), render, vdom)
 
         function render (state) {
@@ -32,6 +33,13 @@ function virtualDirective (component, options) {
             state[value].set(nv)
           })
         })
+
+        return function $onDestroy () {
+          // destroy the loop and struct when the scope is destroyed
+          // to prevent memory leaks eventually crashing chrome
+          loop.target = null
+          state = function () {}
+        }
       }]
     })
   }
