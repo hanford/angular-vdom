@@ -7,12 +7,13 @@ module.exports = virtualDirective
 
 function virtualDirective (component, options) {
   var state = component()
+  var loop
 
   return function () {
     return defaults(options, {
       restrict: 'E',
       link: function (scope, element, attrs) {
-        var loop = Loop(state(), component.render, vdom)
+        loop = Loop(state(), component.render, vdom)
 
         element.append(loop.target)
 
@@ -25,6 +26,9 @@ function virtualDirective (component, options) {
             if (!nv) return
             state[value].set(nv)
           })
+        })
+        $scope.$on('destroy', function () {
+          loop.target = null
         })
       }]
     })
