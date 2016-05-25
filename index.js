@@ -23,28 +23,24 @@ function virtualDirective (component, options) {
 
         element.append(loop.target)
 
-        state(loop.update)
-      },
-      controller: ['$scope', '$attrs', function ($scope, $attrs) {
-        each($attrs.$attr, function (value, key) {
+        each(attrs.$attr, function (value, key) {
           if (!value) return
-          $scope.$watch(value, function (nv) {
+          scope.$watch(value, function (nv) {
             if (!nv) return
             state[value].set(nv)
           })
         })
 
-        function $onDestroy () {
+        state(loop.update)
+      },
+      controller: function () {
+        return function $onDestroy () {
           // destroy the loop and struct when the scope is destroyed
           // to prevent memory leaks eventually crashing chrome
           loop.target = null
           state = function () {}
         }
-
-        return {
-          $onDestroy: $onDestroy
-        }
-      }]
+      }
     })
   }
 }
