@@ -34,11 +34,15 @@ function virtualDirective (component, options) {
           })
         })
 
-        return function $onDestroy () {
+        function $onDestroy () {
           // destroy the loop and struct when the scope is destroyed
           // to prevent memory leaks eventually crashing chrome
           loop.target = null
           state = function () {}
+        }
+
+        return {
+          $onDestroy: $onDestroy
         }
       }]
     })
